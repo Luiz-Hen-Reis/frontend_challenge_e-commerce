@@ -16,12 +16,16 @@ const FilterItem = styled.li<{ active?: boolean }>`
   padding: 0.2rem;
   font-family: inherit;
   list-style: none;
-  font-size: 1.6rem;
+  font-size: 0.9rem;
   color: var(--text-dark);
   font-weight: ${(props) => (props.active ? 600 : 400)};
   border-bottom: ${(props) =>
     props.active ? "4px solid var(--orange-low)" : ""};
   cursor: pointer;
+
+  @media (min-width: ${(props) => props.theme.breakPoint}) {
+    font-size: 1.6rem;
+  }
 `;
 
 export default function FilterByType() {

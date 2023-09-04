@@ -16,7 +16,7 @@ const Container = styled.div`
     font-family: inherit;
     color: var(--text-dark);
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 0.8rem;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -24,6 +24,10 @@ const Container = styled.div`
 
     svg {
       margin-left: 0.8rem;
+    }
+
+    @media (min-width: ${(props) => props.theme.breakPoint}) {
+      font-size: 1.4rem;
     }
   }
 `;
@@ -34,7 +38,7 @@ const PriorityList = styled.ul`
   background: #fff;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 0.4rem;
-  padding: 1.2rem 1.6rem;
+  padding: 0.8rem 1.2rem;
   z-index: 99;
 
   list-style: none;
@@ -45,13 +49,22 @@ const PriorityList = styled.ul`
   li {
     color: var(--text-dark);
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 1rem;
     line-height: 2.2rem;
     cursor: pointer;
   }
 
   li + li {
     margin-top: 0.4rem;
+  }
+
+  @media (min-width: ${(props) => props.theme.breakPoint}) {
+    padding: 1.2rem 1.6rem;
+
+    li {
+      font-size: 1.4rem;
+      line-height: 2.2rem;
+    }
   }
 `;
 
