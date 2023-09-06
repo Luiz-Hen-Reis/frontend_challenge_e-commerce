@@ -1,6 +1,5 @@
-import ProductList from "@/components/ProductList";
 import styles from "./page.module.css";
-import { FilterArea } from "@/components";
+import { FilterArea, ProductList } from "@/components";
 
 export default async function Home() {
   return (

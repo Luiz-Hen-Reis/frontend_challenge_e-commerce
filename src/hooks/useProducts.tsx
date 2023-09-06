@@ -1,10 +1,8 @@
-import { Product } from "@/types/product";
 import axios from "axios";
-import { headers } from "next/headers";
+import { Product } from "@/types/product";
 
 export async function useProducts() {
-  const host = headers().get("host");
-  const { data } = await axios.get(`http://${host!}/api/products`);
+  const { data } = await axios.get(`http://localhost:3000/api/products`);
   const products: Product[] = await data;
 
   return {
