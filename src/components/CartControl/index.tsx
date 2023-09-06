@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "styled-components";
-import CartIcon from "../SvgIcons/CartIcon";
+import CartIcon from "../icons/CartIcon";
 import { useLocalStorage } from "@/hooks";
 
 const Container = styled.div`

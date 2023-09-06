@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "styled-components";
-import ArrowDown from "@/components/SvgIcons/ArrowDown";
+import ArrowDown from "@/components/icons/ArrowDown";
 import { useState } from "react";
 import { useFilter } from "@/contexts/FilterContext";
 import { PriorityTypes } from "@/types/priorityTypes";
