@@ -12,13 +12,11 @@ const ItemContainer = styled.li`
   margin-bottom: 1.4rem;
   cursor: pointer;
   border-radius: 1rem;
-
   img {
     width: inherit;
     height: 30rem;
     border-radius: inherit;
   }
-
   h3 {
     font-family: inherit;
     font-weight: 300;
@@ -26,7 +24,6 @@ const ItemContainer = styled.li`
     padding: 0.8rem 1.2rem;
     color: var(--text-dark-2);
   }
-
   p {
     font-weight: 600;
     font-size: 1.4rem;
@@ -34,14 +31,12 @@ const ItemContainer = styled.li`
     color: var(--shapes-dark);
     padding-left: 1.2rem;
   }
-
   div {
     display: flex;
     align-items: start;
     justify-content: center;
     flex-direction: column;
     padding: 0.8rem 0;
-
     > div {
       width: 22.8rem;
       height: 1px;
