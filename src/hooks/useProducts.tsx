@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Product } from "@/types/product";
+import { useFilter } from "@/contexts/FilterContext";
 
-async function fetcher() {
-  const { data } = await axios.get(`/api/products`);
+async function fetcher(page: number) {
+  const { data } = await axios.get(`/api/products?limit=12&page=${24 * page}`);
   const products: Product[] = await data;
 
   return products;
@@ -14,16 +15,17 @@ async function fetcher() {
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const { page } = useFilter();
 
   async function getProducts() {
     setLoading(true);
-    setProducts(await fetcher());
+    setProducts(await fetcher(page));
     setLoading(false);
   }
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [page]);
 
   return { products, loading };
 }

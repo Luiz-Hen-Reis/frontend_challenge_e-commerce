@@ -1,14 +1,14 @@
 import { FilterTypes } from "@/types/filterTypes";
 import { Product } from "@/types/product";
 
-function setCategories(type: FilterTypes) {
+function setCategory(type: FilterTypes) {
   if (type === FilterTypes.MUG) return "mugs";
   if (type === FilterTypes.SHIRT) return "t-shirts";
   return "";
 }
 
 export function filterByCategory(type: FilterTypes, products: Product[]) {
-  const category = setCategories(type);
+  const category = setCategory(type);
 
   if (category === "mugs") {
     const mugs = products.filter((product) => product.category === "mugs");

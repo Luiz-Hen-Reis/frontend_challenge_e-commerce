@@ -9,12 +9,21 @@ export function filterByPriority(priority: PriorityTypes, products: Product[]) {
 
     return filteredByMajorPrice;
   }
+
   if (priority === PriorityTypes.MINOR_PRICE) {
     const filteredByMinorPrice = products.sort(
       (productA, productB) => productA.price_in_cents - productB.price_in_cents
     );
 
     return filteredByMinorPrice;
+  }
+
+  if (priority === PriorityTypes.POPULARITY) {
+    const filteredBySales = products.sort(
+      (productA, productB) => productB.sales - productA.sales
+    );
+
+    return filteredBySales;
   }
 
   return products;

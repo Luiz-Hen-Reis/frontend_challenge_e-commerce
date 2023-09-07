@@ -56,7 +56,7 @@ export default function ProductItem({
 
   return (
     <ItemContainer>
-      <img src={imageUrl} />
+      <img src={imageUrl} alt={name} />
       <div>
         <h3>{name}</h3>
         <div></div>
