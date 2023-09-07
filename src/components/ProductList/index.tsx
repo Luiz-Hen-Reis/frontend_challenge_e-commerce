@@ -1,6 +1,5 @@
 "use client";
 
-import { Suspense } from "react";
 import { useFilteredProducts } from "@/hooks";
 import { styled } from "styled-components";
 import ProductItem from "../ProductItem";
