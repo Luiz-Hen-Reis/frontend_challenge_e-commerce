@@ -3,7 +3,7 @@ export interface Product {
   name: string;
   description: string;
   image_url: string;
-  category: string;
+  category: "t-shirts" | "mugs" | "";
   price_in_cents: number;
   sales: number;
 }

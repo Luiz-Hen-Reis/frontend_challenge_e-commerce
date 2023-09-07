@@ -1,6 +1,7 @@
 "use client";
 
-import { useProducts } from "@/hooks";
+import { Suspense } from "react";
+import { useFilteredProducts } from "@/hooks";
 import { styled } from "styled-components";
 import ProductItem from "../ProductItem";
 
@@ -17,12 +18,12 @@ const ListContainer = styled.ul`
   }
 `;
 
-export default async function ProductList() {
-  const { products } = await useProducts();
+export default function ProductList() {
+  const { filteredProducts } = useFilteredProducts();
 
   return (
     <ListContainer>
-      {products.map((product) => (
+      {filteredProducts.map((product) => (
         <ProductItem {...product} />
       ))}
     </ListContainer>

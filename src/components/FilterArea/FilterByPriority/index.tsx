@@ -89,7 +89,6 @@ export default function FilterByPriority() {
       </button>
       {isOpen && (
         <PriorityList>
-          <li onClick={() => handlePriority(PriorityTypes.NEWS)}>Novidades</li>
           <li onClick={() => handlePriority(PriorityTypes.MAJOR_PRICE)}>
             Preço: Maior - menor
           </li>
