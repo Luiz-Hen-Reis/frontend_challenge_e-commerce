@@ -12,7 +12,7 @@ export const FilterContext = createContext({
   search: "",
   page: 0,
   type: FilterTypes.ALL,
-  priority: PriorityTypes.NEWS,
+  priority: PriorityTypes.POPULARITY,
   setPriority: (value: PriorityTypes) => {},
   setSearch: (value: string) => {},
   setPage: (value: number) => {},
