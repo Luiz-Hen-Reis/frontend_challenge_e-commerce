@@ -29,6 +29,7 @@ export default function ProductList() {
           <ProductItem {...product} key={product.id} />
         ))}
       </ListContainer>
+      <Pagination totalProducts={filteredProducts.length} />
     </>
   );
 }
