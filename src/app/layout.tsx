@@ -1,10 +1,10 @@
 import "./globals.css";
 import { Header } from "@/components";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Saira } from "next/font/google";
 import Providers from "@/Providers";
 
-const inter = Inter({ subsets: ["latin"] });
+const saira = Saira({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Caputeeno",
@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={saira.className}>
         <Providers>
           <Header />
           {children}
