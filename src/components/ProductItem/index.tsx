@@ -27,6 +27,7 @@ const ItemContainer = styled.li`
     color: var(--text-dark-2);
   }
   p {
+    width: 100%;
     font-weight: 600;
     font-size: 1.4rem;
     line-height: 150%;

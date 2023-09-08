@@ -3,7 +3,7 @@
 import { useFilteredProducts } from "@/hooks";
 import { styled } from "styled-components";
 import ProductItem from "../ProductItem";
-import { Pagination } from "..";
+import { Pagination, SkeletonList } from "..";
 
 const ListContainer = styled.ul`
   width: 100%;
@@ -25,7 +25,7 @@ export default function ProductList() {
     <>
       <Pagination totalProducts={filteredProducts.length} />
       <ListContainer>
-        {loading && <div>Carregando...</div>}
+        {loading && <SkeletonList />}
         {!loading &&
           filteredProducts.map((product) => (
             <ProductItem {...product} key={product.id} />
