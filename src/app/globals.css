@@ -9,9 +9,8 @@
   --delete-color: #de3838;
   --orange-low: #ffa585;
   --shapes: #dce2e6;
-
-  --md-devices: "768px";
-  --lg-devices: "1024px";
+  --brand-blue: #115d8c;
+  --shapes-light: #f5f5fa;
 }
 
 * {

@@ -2,6 +2,7 @@
 import { Product } from "@/types/product";
 import { formatPrice } from "@/utils/formatPrice";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { styled } from "styled-components";
 
 const ItemContainer = styled.li`
@@ -55,17 +56,16 @@ export default function ProductItem({
   id,
 }: Product) {
   const formattedPrice = formatPrice(price);
+  const router = useRouter();
 
   return (
-    <Link href={`/product/${id}`}>
-      <ItemContainer>
-        <img src={imageUrl} alt={name} />
-        <div>
-          <h3>{name}</h3>
-          <div></div>
-          <p>{formattedPrice}</p>
-        </div>
-      </ItemContainer>
-    </Link>
+    <ItemContainer onClick={() => router.push(`/product/${id}`)}>
+      <img src={imageUrl} alt={name} />
+      <div>
+        <h3>{name}</h3>
+        <div></div>
+        <p>{formattedPrice}</p>
+      </div>
+    </ItemContainer>
   );
 }

@@ -1,8 +1,8 @@
 import prisma from "@/database/prisma";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.nextUrl);
   const page = searchParams.get("page");
   const limit = searchParams.get("limit");
 

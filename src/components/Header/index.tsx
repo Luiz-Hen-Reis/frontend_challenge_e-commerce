@@ -3,6 +3,7 @@
 import styled from "styled-components";
 import { Saira_Stencil_One } from "next/font/google";
 import { useFilter } from "@/contexts/FilterContext";
+import CartControl from "../CartControl";
 
 const SairaStencilOne = Saira_Stencil_One({
   weight: ["400"],
@@ -38,6 +39,7 @@ export default function Header() {
   return (
     <HeaderTag>
       <Logo className={SairaStencilOne.className}>Capoteeno</Logo>
+      <CartControl />
     </HeaderTag>
   );
 }
