@@ -14,7 +14,7 @@ async function fetcher(page: number) {
 
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const { page } = useFilter();
 
   async function getProducts() {
@@ -25,6 +25,11 @@ export function useProducts() {
 
   useEffect(() => {
     getProducts();
+
+    return () => {
+      setLoading(true);
+      setProducts([]);
+    };
   }, [page]);
 
   return { products, loading };

@@ -16,16 +16,16 @@ const BtnContainer = styled.div`
   margin-top: 1.2rem;
 `;
 
-const Button = styled.button<{ limit: boolean }>`
+const Button = styled.button<{ disabled: boolean }>`
   cursor: pointer;
   width: 3.2rem;
   height: 3.2rem;
   border-radius: 0.8rem;
   background-color: var(--shapes);
-  color: ${(props) =>
-    props.limit ? "var(--delete-color)" : "var(--text-dark)"};
-  border: ${(props) =>
-    props.limit ? "1px solid var(--delete-color)" : "none"};
+  color: var(--text-dark);
+  border: none;
+
+  opacity: ${(props) => (props.disabled ? ".3" : "")};
 `;
 
 export default function Pagination({ totalProducts }: Props) {
@@ -43,10 +43,10 @@ export default function Pagination({ totalProducts }: Props) {
 
   return (
     <BtnContainer>
-      <Button onClick={handleClickLeft} limit={page === 0}>
+      <Button onClick={handleClickLeft} disabled={page === 0}>
         &#60;
       </Button>
-      <Button onClick={handleClickRight} limit={page + 1 === totalPages}>
+      <Button onClick={handleClickRight} disabled={page + 1 === totalPages}>
         &#62;
       </Button>
     </BtnContainer>

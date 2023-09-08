@@ -19,15 +19,17 @@ const ListContainer = styled.ul`
 `;
 
 export default function ProductList() {
-  const { filteredProducts } = useFilteredProducts();
+  const { filteredProducts, loading } = useFilteredProducts();
 
   return (
     <>
       <Pagination totalProducts={filteredProducts.length} />
       <ListContainer>
-        {filteredProducts.map((product) => (
-          <ProductItem {...product} key={product.id} />
-        ))}
+        {loading && <div>Carregando...</div>}
+        {!loading &&
+          filteredProducts.map((product) => (
+            <ProductItem {...product} key={product.id} />
+          ))}
       </ListContainer>
       <Pagination totalProducts={filteredProducts.length} />
     </>
