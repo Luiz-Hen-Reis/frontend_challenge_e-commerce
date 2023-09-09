@@ -3,9 +3,11 @@
 import { styled } from "styled-components";
 import CartIcon from "../../icons/CartIcon";
 import { useCartWithLocalStorage } from "@/hooks";
+import { useRouter } from "next/navigation";
 
 const Container = styled.div`
   position: relative;
+  cursor: pointer;
 `;
 
 const CartCount = styled.span`
@@ -23,9 +25,10 @@ const CartCount = styled.span`
 
 export default function CartControl() {
   const { cart } = useCartWithLocalStorage();
+  const router = useRouter();
 
   return (
-    <Container>
+    <Container onClick={() => router.push("/cart")}>
       <CartIcon />
       {cart && cart.length > 0 && <CartCount>{cart.length}</CartCount>}
     </Container>

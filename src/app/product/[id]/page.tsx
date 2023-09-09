@@ -2,7 +2,8 @@
 
 import { BackToHomeButton } from "@/components";
 import { useCartWithLocalStorage, useProductById } from "@/hooks";
-import { formatPrice } from "@/utils/formatPrice";
+import { formatCategory, formatPrice } from "@/utils";
+
 import { useParams } from "next/navigation";
 import styled from "styled-components";
 
@@ -114,7 +115,7 @@ export default function ProductPage() {
           </LeftSide>
           <RightSide>
             <div>
-              <h2>{product.category}</h2>
+              <h2>{formatCategory(product.category)}</h2>
               <h1>{product.name}</h1>
               <strong>{formatPrice(product.price_in_cents)}</strong>
               <span>

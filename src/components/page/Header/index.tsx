@@ -21,7 +21,7 @@ const HeaderTag = styled.header`
   }
 `;
 
-const Logo = styled.span`
+const Logo = styled.a`
   font-size: 3.5rem;
   line-height: 4rem;
   color: var(--logo-color);
@@ -38,7 +38,9 @@ export default function Header() {
 
   return (
     <HeaderTag>
-      <Logo className={SairaStencilOne.className}>Capoteeno</Logo>
+      <Logo className={SairaStencilOne.className} href="/">
+        Capoteeno
+      </Logo>
       <CartControl />
     </HeaderTag>
   );
