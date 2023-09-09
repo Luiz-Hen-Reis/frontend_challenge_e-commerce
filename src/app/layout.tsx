@@ -2,7 +2,7 @@ import "./globals.css";
 import { Header } from "@/components";
 import type { Metadata } from "next";
 import { Saira } from "next/font/google";
-import Providers from "@/Providers";
+import Providers from "@/providers";
 
 const saira = Saira({ subsets: ["latin"] });
 

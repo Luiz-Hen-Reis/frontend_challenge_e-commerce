@@ -2,7 +2,7 @@
 
 import styled, { keyframes, css } from "styled-components";
 
-const PulseAnimation = keyframes`
+export const PulseAnimation = keyframes`
     0% {
         background-color: var(--skeleton-color-1);
     }
@@ -12,7 +12,7 @@ const PulseAnimation = keyframes`
     }
 `;
 
-const animation = css`
+export const animation = css`
   animation: ${PulseAnimation} 1s linear infinite alternate;
 `;
 

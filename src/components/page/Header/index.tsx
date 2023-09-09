@@ -3,7 +3,7 @@
 import styled from "styled-components";
 import { Saira_Stencil_One } from "next/font/google";
 import { useFilter } from "@/contexts/FilterContext";
-import CartControl from "../CartControl";
+import CartControl from "../../ui/CartControl";
 
 const SairaStencilOne = Saira_Stencil_One({
   weight: ["400"],

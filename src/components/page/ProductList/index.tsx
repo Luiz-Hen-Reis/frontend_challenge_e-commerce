@@ -3,7 +3,7 @@
 import { useFilteredProducts } from "@/hooks";
 import { styled } from "styled-components";
 import ProductItem from "../ProductItem";
-import { Pagination, SkeletonList } from "..";
+import { Pagination, SkeletonList } from "../..";
 
 const ListContainer = styled.ul`
   width: 100%;
