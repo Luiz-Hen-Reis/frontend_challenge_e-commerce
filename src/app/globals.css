@@ -13,6 +13,7 @@
   --shapes-light: #f5f5fa;
   --skeleton-color-1: hsl(200, 20%, 70%);
   --skeleton-color-2: hsl(200, 20%, 95%);
+  --green: #51b853;
 }
 
 * {
