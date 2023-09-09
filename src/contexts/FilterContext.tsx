@@ -1,6 +1,5 @@
 "use client";
 
-import { useLocalStorage } from "@/hooks";
 import { FilterTypes } from "@/types/filterTypes";
 import { PriorityTypes } from "@/types/priorityTypes";
 import { ReactNode, createContext, useContext, useState } from "react";
@@ -27,7 +26,6 @@ export function FilterProvider({ children }: FilterProviderProps) {
   const [priority, setPriority] = useState<PriorityTypes>(
     PriorityTypes.POPULARITY
   );
-  const { data } = useLocalStorage("cart-items");
 
   return (
     <FilterContext.Provider

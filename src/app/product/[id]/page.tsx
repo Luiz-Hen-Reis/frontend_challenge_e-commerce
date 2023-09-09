@@ -1,7 +1,7 @@
 "use client";
 
 import { BackToHomeButton } from "@/components";
-import { useLocalStorage, useProductById } from "@/hooks";
+import { useCartWithLocalStorage, useProductById } from "@/hooks";
 import { formatPrice } from "@/utils/formatPrice";
 import { useParams } from "next/navigation";
 import styled from "styled-components";
@@ -97,36 +97,10 @@ export default function ProductPage() {
   const params = useParams();
   const { id } = params;
   const { product, loading } = useProductById(id as string);
+  const { addToCart } = useCartWithLocalStorage();
 
   function handleAddToCart() {
-    const cartItems = localStorage.getItem("cart-items");
-
-    if (cartItems) {
-      let cartItemsArray = JSON.parse(cartItems);
-
-      let existingProductIndex = cartItemsArray.findIndex(
-        (item: { id: string }) => item.id === id
-      );
-
-      if (existingProductIndex != -1) {
-        cartItemsArray[existingProductIndex].quantity += 1;
-      } else {
-        cartItemsArray.push({ ...product, quantity: 1, id });
-      }
-
-      localStorage.setItem("cart-items", JSON.stringify(cartItemsArray));
-    } else {
-      localStorage.setItem(
-        "cart-items",
-        JSON.stringify([
-          {
-            ...product,
-            id,
-            quantity: 1,
-          },
-        ])
-      );
-    }
+    addToCart(product!, id as string);
   }
 
   return (

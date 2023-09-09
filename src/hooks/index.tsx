@@ -1,6 +1,11 @@
 import { useFilteredProducts } from "./useFilterProducts";
-import { useLocalStorage } from "./useLocalStorage";
+import { useCartWithLocalStorage } from "./useCartWithLocalStorage";
 import { useProductById } from "./useProductById";
 import { useProducts } from "./useProducts";
 
-export { useLocalStorage, useProducts, useFilteredProducts, useProductById };
+export {
+  useCartWithLocalStorage,
+  useProducts,
+  useFilteredProducts,
+  useProductById,
+};
