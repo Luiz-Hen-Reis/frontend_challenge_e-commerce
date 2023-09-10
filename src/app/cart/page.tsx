@@ -2,6 +2,8 @@
 
 import { BackToHomeButton, CartItem } from "@/components";
 import { useCartWithLocalStorage } from "@/hooks";
+import { LocalStorageProduct } from "@/hooks/useCartWithLocalStorage";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -101,7 +103,22 @@ const Container = styled.div`
 `;
 
 export default function Cart() {
-  const { cart } = useCartWithLocalStorage();
+  const { cart, removeFromCart } = useCartWithLocalStorage();
+  const [cartItems, setCartItems] = useState<LocalStorageProduct[]>([]);
+
+  useEffect(() => {
+    if (cart) {
+      setCartItems([...cart]);
+    }
+
+    return () => setCartItems([]);
+  }, [cart]);
+
+  const handleRemoveFromCart = (id: number) => {
+    removeFromCart(id);
+    const newCartItems = cartItems.filter((item) => item.id !== id);
+    setCartItems(newCartItems);
+  };
 
   return (
     <main>
@@ -111,12 +128,15 @@ export default function Cart() {
           <div>
             <h1>SEU CARRINHO</h1>
             <p>
-              Total ({cart.length} produtos) <span>0.00</span>
+              Total ({cartItems.length} produtos) <span>0.00</span>
             </p>
           </div>
           <ul>
-            {cart.map((product) => (
-              <CartItem {...product} />
+            {cartItems.map((product) => (
+              <CartItem
+                {...product}
+                handleRemoveFromCart={handleRemoveFromCart}
+              />
             ))}
           </ul>
         </section>

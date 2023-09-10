@@ -1,9 +1,11 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { styled } from "styled-components";
 import CartIcon from "../../icons/CartIcon";
 import { useCartWithLocalStorage } from "@/hooks";
 import { useRouter } from "next/navigation";
+import { LocalStorageProduct } from "@/hooks/useCartWithLocalStorage";
 
 const Container = styled.div`
   position: relative;

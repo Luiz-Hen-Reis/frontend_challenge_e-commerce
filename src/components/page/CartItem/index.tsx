@@ -9,6 +9,10 @@ import { formatPrice } from "@/utils";
 import { useState } from "react";
 import styled from "styled-components";
 
+interface CartItemProps extends LocalStorageProduct {
+  handleRemoveFromCart: (id: number) => void;
+}
+
 const ItemContainer = styled.li`
   display: flex;
   background-color: var(--shapes-light);
@@ -33,6 +37,10 @@ const ItemContainer = styled.li`
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      span {
+        cursor: pointer;
+      }
     }
 
     h2 {
@@ -79,7 +87,8 @@ export default function CartItem({
   price_in_cents: price,
   quantity,
   id,
-}: LocalStorageProduct) {
+  handleRemoveFromCart,
+}: CartItemProps) {
   const { increaseItemQuantity, decreaseItemQuantity } =
     useCartWithLocalStorage();
   const [itemQuantity, setItemQuantity] = useState<number>(quantity);
@@ -104,7 +113,9 @@ export default function CartItem({
       <div className="right-side">
         <div className="title">
           <h2>{name}</h2>
-          <GarbageCan />
+          <span onClick={() => handleRemoveFromCart(id)}>
+            <GarbageCan />
+          </span>
         </div>
         <p>{description}</p>
         <div className="quantity-price-area">

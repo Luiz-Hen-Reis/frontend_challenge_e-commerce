@@ -1,6 +1,6 @@
 "use client";
 
-import { BackToHomeButton } from "@/components";
+import { BackToHomeButton, ProductSkeleton } from "@/components";
 import { useCartWithLocalStorage, useProductById } from "@/hooks";
 import { formatCategory, formatPrice } from "@/utils";
 
@@ -107,7 +107,7 @@ export default function ProductPage() {
   return (
     <main>
       <BackToHomeButton />
-      {loading && !product && <div>loading..</div>}
+      {loading && !product && <ProductSkeleton />}
       {!loading && product && (
         <Container>
           <LeftSide>

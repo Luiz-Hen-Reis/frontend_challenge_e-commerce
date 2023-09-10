@@ -49,8 +49,26 @@ export function useCartWithLocalStorage() {
           },
         ])
       );
-      setCart([...cart, { ...product, id: Number(id), quantity: 1 }]);
     }
+  };
+
+  const removeFromCart = (id: number) => {
+    const cartItems = localStorage.getItem(cartKey);
+
+    if (cartItems) {
+      let cartItemsArray = JSON.parse(cartItems);
+
+      let existingProductIndex = cartItemsArray.findIndex(
+        (item: { id: string }) => item.id === id.toString()
+      );
+
+      if (existingProductIndex != -1) {
+        cartItemsArray.splice(existingProductIndex, 1);
+      }
+      localStorage.setItem(cartKey, JSON.stringify(cartItemsArray));
+    }
+
+    return;
   };
 
   const increaseItemQuantity = (id: number) => {
@@ -96,6 +114,7 @@ export function useCartWithLocalStorage() {
   return {
     cart,
     addToCart,
+    removeFromCart,
     increaseItemQuantity,
     decreaseItemQuantity,
   };
