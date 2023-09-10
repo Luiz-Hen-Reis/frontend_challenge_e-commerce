@@ -3,7 +3,7 @@
 import { Product } from "@/types/product";
 import { useEffect, useState } from "react";
 
-interface LocalStorageProduct extends Product {
+export interface LocalStorageProduct extends Product {
   quantity: number;
 }
 
@@ -15,7 +15,9 @@ export function useCartWithLocalStorage() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const cartItems = localStorage.getItem(cartKey);
-      if (cartItems) setCart(JSON.parse(cartItems));
+      if (cartItems) {
+        setCart(JSON.parse(cartItems));
+      }
     }
   }, []);
 
@@ -47,11 +49,54 @@ export function useCartWithLocalStorage() {
           },
         ])
       );
+      setCart([...cart, { ...product, id: Number(id), quantity: 1 }]);
     }
+  };
+
+  const increaseItemQuantity = (id: number) => {
+    const cartItems = localStorage.getItem(cartKey);
+
+    if (cartItems) {
+      let cartItemsArray = JSON.parse(cartItems);
+
+      let existingProductIndex = cartItemsArray.findIndex(
+        (item: { id: string }) => item.id === id.toString()
+      );
+
+      if (existingProductIndex != -1) {
+        cartItemsArray[existingProductIndex].quantity += 1;
+      }
+
+      localStorage.setItem(cartKey, JSON.stringify(cartItemsArray));
+    }
+
+    return;
+  };
+
+  const decreaseItemQuantity = (id: number) => {
+    const cartItems = localStorage.getItem(cartKey);
+
+    if (cartItems) {
+      let cartItemsArray = JSON.parse(cartItems);
+
+      let existingProductIndex = cartItemsArray.findIndex(
+        (item: { id: string }) => item.id === id.toString()
+      );
+
+      if (existingProductIndex != -1) {
+        cartItemsArray[existingProductIndex].quantity -= 1;
+      }
+
+      localStorage.setItem(cartKey, JSON.stringify(cartItemsArray));
+    }
+
+    return;
   };
 
   return {
     cart,
     addToCart,
+    increaseItemQuantity,
+    decreaseItemQuantity,
   };
 }

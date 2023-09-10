@@ -24,13 +24,13 @@ const CartCount = styled.span`
 `;
 
 export default function CartControl() {
-  const { cart } = useCartWithLocalStorage();
   const router = useRouter();
+  const { cart } = useCartWithLocalStorage();
 
   return (
     <Container onClick={() => router.push("/cart")}>
       <CartIcon />
-      {cart && cart.length > 0 && <CartCount>{cart.length}</CartCount>}
+      <CartCount>{cart.length}</CartCount>
     </Container>
   );
 }

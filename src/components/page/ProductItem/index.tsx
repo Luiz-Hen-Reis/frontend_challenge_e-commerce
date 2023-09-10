@@ -1,7 +1,7 @@
 "use client";
+
 import { Product } from "@/types/product";
 import { formatPrice } from "@/utils/formatPrice";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { styled } from "styled-components";
 
@@ -10,7 +10,7 @@ const ItemContainer = styled.li`
   flex-direction: column;
   justify-content: center;
   width: 25.6rem;
-  background-color: var(--bg-secondary);
+  background-color: var(--shapes-light);
   margin-bottom: 1.4rem;
   cursor: pointer;
   border-radius: 1rem;

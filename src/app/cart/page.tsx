@@ -1,6 +1,6 @@
 "use client";
 
-import { BackToHomeButton } from "@/components";
+import { BackToHomeButton, CartItem } from "@/components";
 import { useCartWithLocalStorage } from "@/hooks";
 import styled from "styled-components";
 
@@ -9,6 +9,7 @@ const Container = styled.div`
   align-items: flex-start;
   width: 100%;
   font-family: inherit;
+  gap: 2rem;
 
   section {
     width: 70%;
@@ -113,11 +114,11 @@ export default function Cart() {
               Total ({cart.length} produtos) <span>0.00</span>
             </p>
           </div>
-          <div>
-            {cart.map((item) => (
-              <div>{item.name}</div>
+          <ul>
+            {cart.map((product) => (
+              <CartItem {...product} />
             ))}
-          </div>
+          </ul>
         </section>
         <aside>
           <div className="upper-part">
