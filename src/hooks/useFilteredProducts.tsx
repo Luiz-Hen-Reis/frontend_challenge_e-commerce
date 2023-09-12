@@ -14,5 +14,12 @@ export function useFilteredProducts() {
     filteredProductsByCategory
   );
 
-  return { filteredProducts: filteredProductsByPriority, loading };
+  const filteredProductsBySearch =
+    search !== ""
+      ? filteredProductsByPriority.filter((product) =>
+          product.name.toLowerCase().includes(search.toLowerCase())
+        )
+      : filteredProductsByPriority;
+
+  return { filteredProducts: filteredProductsBySearch, loading };
 }
