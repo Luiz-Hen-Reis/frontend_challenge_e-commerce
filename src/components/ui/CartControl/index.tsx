@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { styled } from "styled-components";
 import CartIcon from "../../icons/CartIcon";
 import { useCartWithLocalStorage } from "@/hooks";
@@ -27,12 +26,11 @@ const CartCount = styled.span`
 
 export default function CartControl() {
   const router = useRouter();
-  const { cart } = useCartWithLocalStorage();
 
   return (
     <Container onClick={() => router.push("/cart")}>
       <CartIcon />
-      <CartCount>{cart.length}</CartCount>
+      <CartCount></CartCount>
     </Container>
   );
 }

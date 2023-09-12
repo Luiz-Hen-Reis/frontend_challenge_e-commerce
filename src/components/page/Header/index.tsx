@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Saira_Stencil_One } from "next/font/google";
 import { useFilter } from "@/contexts/FilterContext";
 import CartControl from "../../ui/CartControl";
+import { InputBarWSearchIcon } from "@/components";
 
 const SairaStencilOne = Saira_Stencil_One({
   weight: ["400"],
@@ -15,6 +16,13 @@ const HeaderTag = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.4rem;
+  }
 
   @media (min-width: ${(props) => props.theme.breakPoint}) {
     padding: 2rem 16rem;
@@ -41,7 +49,14 @@ export default function Header() {
       <Logo className={SairaStencilOne.className} href="/">
         Capoteeno
       </Logo>
-      <CartControl />
+      <div>
+        <InputBarWSearchIcon
+          value={search}
+          handleChange={setSearch}
+          placeholder="Procurando por algo específico?"
+        />
+        <CartControl />
+      </div>
     </HeaderTag>
   );
 }

@@ -6,6 +6,7 @@ import BackToHomeButton from "./ui/BackToHomeButton";
 import SkeletonList from "./skeletons/SkeletonList";
 import CartItem from "./page/CartItem";
 import ProductSkeleton from "./skeletons/ProductSkeleton";
+import InputBarWSearchIcon from "./ui/InputBar";
 
 export {
   Header,
@@ -16,4 +17,5 @@ export {
   SkeletonList,
   CartItem,
   ProductSkeleton,
+  InputBarWSearchIcon,
 };

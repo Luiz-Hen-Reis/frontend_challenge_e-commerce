@@ -1,8 +1,18 @@
 "use client";
 
+import {
+  LocalStorageProduct,
+  useCartWithLocalStorage,
+} from "@/hooks/useCartWithLocalStorage";
 import { FilterTypes } from "@/types/filterTypes";
 import { PriorityTypes } from "@/types/priorityTypes";
-import { ReactNode, createContext, useContext, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 interface FilterProviderProps {
   children: ReactNode;

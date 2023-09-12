@@ -5,7 +5,7 @@ import { filterByPriority } from "@/utils/filterByPriority";
 
 export function useFilteredProducts() {
   const { products, loading } = useProducts();
-  const { type, priority } = useFilter();
+  const { type, priority, search } = useFilter();
 
   const filteredProductsByCategory = filterByCategory(type, products);
 

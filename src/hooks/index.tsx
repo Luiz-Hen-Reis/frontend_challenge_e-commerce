@@ -1,4 +1,4 @@
-import { useFilteredProducts } from "./useFilterProducts";
+import { useFilteredProducts } from "./useFilteredProducts";
 import { useCartWithLocalStorage } from "./useCartWithLocalStorage";
 import { useProductById } from "./useProductById";
 import { useProducts } from "./useProducts";
