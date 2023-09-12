@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "styled-components";
-import CartIcon from "../../icons/CartIcon";
+import { FiShoppingBag } from "react-icons/fi";
 import { useCartWithLocalStorage } from "@/hooks";
 import { useRouter } from "next/navigation";
 import { LocalStorageProduct } from "@/hooks/useCartWithLocalStorage";
@@ -29,7 +29,7 @@ export default function CartControl() {
 
   return (
     <Container onClick={() => router.push("/cart")}>
-      <CartIcon />
+      <FiShoppingBag size={24} />
       <CartCount></CartCount>
     </Container>
   );

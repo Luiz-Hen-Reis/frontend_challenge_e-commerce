@@ -1,6 +1,6 @@
 "use client";
 
-import SearchIcon from "@/components/icons/SearchIcon";
+import { BsSearch } from "react-icons/bs";
 import { InputHTMLAttributes } from "react";
 import { styled } from "styled-components";
 
@@ -41,7 +41,7 @@ export default function InputBarWSearchIcon(props: InputProps) {
         onChange={(event) => props.handleChange(event.target.value)}
         {...props}
       />
-      <SearchIcon />
+      <BsSearch size={20} />
     </InputContainer>
   );
 }

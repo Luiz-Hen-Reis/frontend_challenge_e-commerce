@@ -1,8 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import ArrowLeft from "../../icons/ArrowLeft";
-import Link from "next/link";
+import { BsArrowLeftCircle } from "react-icons/bs";
 import { useRouter } from "next/navigation";
 
 const Button = styled.button`
@@ -26,7 +25,7 @@ export default function BackToHomeButton() {
   return (
     <Button onClick={() => router.push("/")}>
       <span>
-        <ArrowLeft />
+        <BsArrowLeftCircle />
       </span>
       Voltar
     </Button>

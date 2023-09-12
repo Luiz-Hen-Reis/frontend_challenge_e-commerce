@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "styled-components";
-import ArrowDown from "@/components/icons/ArrowDown";
+import { RiArrowDownSLine } from "react-icons/ri";
 import { useState } from "react";
 import { useFilter } from "@/contexts/FilterContext";
 import { PriorityTypes } from "@/types/priorityTypes";
@@ -85,7 +85,7 @@ export default function FilterByPriority() {
     <Container>
       <button onClick={handleOpen}>
         Organizar por
-        <ArrowDown />
+        <RiArrowDownSLine size={16} />
       </button>
       {isOpen && (
         <PriorityList>

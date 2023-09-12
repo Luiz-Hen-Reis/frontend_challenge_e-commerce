@@ -1,6 +1,6 @@
 "use client";
 
-import GarbageCan from "@/components/icons/GarbageCan";
+import { GoTrash } from "react-icons/go";
 import {
   LocalStorageProduct,
   useCartWithLocalStorage,
@@ -114,7 +114,7 @@ export default function CartItem({
         <div className="title">
           <h2>{name}</h2>
           <span onClick={() => handleRemoveFromCart(id)}>
-            <GarbageCan />
+            <GoTrash size={20} />
           </span>
         </div>
         <p>{description}</p>
