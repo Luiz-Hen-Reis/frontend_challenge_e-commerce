@@ -11,6 +11,7 @@ interface Props {
 
 const theme = {
   breakPoint: "768px",
+  largeBreakPoint: "930px",
 };
 
 export default function Providers({ children }: Props) {

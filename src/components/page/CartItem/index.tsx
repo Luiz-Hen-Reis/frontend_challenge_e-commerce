@@ -15,14 +15,25 @@ interface CartItemProps extends LocalStorageProduct {
 
 const ItemContainer = styled.li`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: var(--shapes-light);
   gap: 2rem;
   margin: 2.2rem 0;
   border-radius: 0.8rem;
   font-family: inherit;
 
+  @media (min-width: ${(props) => props.theme.largeBreakPoint}) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
   .left-side {
-    width: 25.6rem;
+    width: 100%;
+
+    @media (min-width: ${(props) => props.theme.largeBreakPoint}) {
+      width: 25.6rem;
+    }
 
     img {
       width: inherit;

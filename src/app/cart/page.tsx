@@ -8,10 +8,16 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   font-family: inherit;
   gap: 2rem;
+
+  @media (min-width: ${(props) => props.theme.largeBreakPoint}) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
 
   section {
     width: 70%;

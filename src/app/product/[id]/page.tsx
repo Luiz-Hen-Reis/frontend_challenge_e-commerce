@@ -14,7 +14,7 @@ const Container = styled.div`
   flex-direction: column;
   gap: 4rem;
 
-  @media (min-width: ${(props) => props.theme.breakPoint}) {
+  @media (min-width: ${(props) => props.theme.largeBreakPoint}) {
     flex-direction: row;
   }
 `;
@@ -26,7 +26,7 @@ const LeftSide = styled.div`
     width: inherit;
   }
 
-  @media (min-width: ${(props) => props.theme.breakPoint}) {
+  @media (min-width: ${(props) => props.theme.largeBreakPoint}) {
     width: 62rem;
   }
 `;

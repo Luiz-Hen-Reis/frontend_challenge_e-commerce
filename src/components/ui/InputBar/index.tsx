@@ -5,27 +5,37 @@ import { InputHTMLAttributes } from "react";
 import { styled } from "styled-components";
 
 const PrimaryInput = styled.input`
-  width: 35.2rem;
-  border-radius: 0.8rem;
-  border: none;
-  padding: 1rem 1.6rem;
-  background-color: var(--bg-secondary);
-  font-family: inherit;
-  font-weight: 400;
-  font-size: 1.4rem;
-  line-height: 2.2rem;
-  color: var(--text-dark);
+  display: none;
+
+  @media (min-width: ${(props) => props.theme.largeBreakPoint}) {
+    display: block;
+    width: 35.2rem;
+    border-radius: 0.8rem;
+    border: none;
+    padding: 1rem 1.6rem;
+    background-color: var(--bg-secondary);
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    color: var(--text-dark);
+  }
 `;
 
 const InputContainer = styled.div`
-  position: relative;
-  width: inherit;
+  display: none;
 
-  svg {
-    position: absolute;
-    right: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
+  @media (min-width: ${(props) => props.theme.largeBreakPoint}) {
+    display: block;
+    position: relative;
+    width: inherit;
+
+    svg {
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 `;
 

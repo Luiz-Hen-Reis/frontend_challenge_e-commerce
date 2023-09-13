@@ -17,7 +17,7 @@ const ItemContainer = styled.li`
   img {
     width: inherit;
     height: 30rem;
-    border-radius: inherit;
+    border-radius: 1rem 1rem 0 0;
   }
   h3 {
     font-family: inherit;
