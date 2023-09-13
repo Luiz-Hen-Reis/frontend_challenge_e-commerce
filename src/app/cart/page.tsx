@@ -1,6 +1,6 @@
 "use client";
 
-import { BackToHomeButton, CartItem } from "@/components";
+import { BackToHomeButton, CartItem, Loading } from "@/components";
 import { useCartWithLocalStorage } from "@/hooks";
 import { LocalStorageProduct } from "@/hooks/useCartWithLocalStorage";
 import { useEffect, useState } from "react";
@@ -111,10 +111,13 @@ const Container = styled.div`
 export default function Cart() {
   const { cart, removeFromCart } = useCartWithLocalStorage();
   const [cartItems, setCartItems] = useState<LocalStorageProduct[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    setLoading(true);
     if (cart) {
       setCartItems([...cart]);
+      setLoading(false);
     }
 
     return () => setCartItems([]);
@@ -138,12 +141,14 @@ export default function Cart() {
             </p>
           </div>
           <ul>
-            {cartItems.map((product) => (
-              <CartItem
-                {...product}
-                handleRemoveFromCart={handleRemoveFromCart}
-              />
-            ))}
+            {loading && <Loading />}
+            {cartItems &&
+              cartItems.map((product) => (
+                <CartItem
+                  {...product}
+                  handleRemoveFromCart={handleRemoveFromCart}
+                />
+              ))}
           </ul>
         </section>
         <aside>

@@ -5,8 +5,8 @@ import Pagination from "./ui/Pagination";
 import BackToHomeButton from "./ui/BackToHomeButton";
 import SkeletonList from "./skeletons/SkeletonList";
 import CartItem from "./page/CartItem";
-import ProductSkeleton from "./skeletons/ProductSkeleton";
 import InputBarWSearchIcon from "./ui/InputBar";
+import Loading from "./ui/Loading";
 
 export {
   Header,
@@ -16,6 +16,6 @@ export {
   BackToHomeButton,
   SkeletonList,
   CartItem,
-  ProductSkeleton,
   InputBarWSearchIcon,
+  Loading,
 };
