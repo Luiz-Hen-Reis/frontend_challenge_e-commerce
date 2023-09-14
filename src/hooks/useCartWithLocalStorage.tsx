@@ -2,6 +2,7 @@
 
 import { Product } from "@/types/product";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export interface LocalStorageProduct extends Product {
   quantity: number;
@@ -25,16 +26,20 @@ export function useCartWithLocalStorage() {
     const cartItems = localStorage.getItem(cartKey);
 
     if (cartItems) {
-      let cartItemsArray = JSON.parse(cartItems);
+      let cartItemsArray: LocalStorageProduct[] = JSON.parse(cartItems);
 
       let existingProductIndex = cartItemsArray.findIndex(
-        (item: { id: string }) => item.id === id
+        (item: { id: number }) => item.id === Number(id)
       );
 
       if (existingProductIndex != -1) {
         cartItemsArray[existingProductIndex].quantity += 1;
+        toast.success(
+          `${cartItemsArray[existingProductIndex].name} adicionado +1`
+        );
       } else {
-        cartItemsArray.push({ ...product, quantity: 1, id });
+        cartItemsArray.push({ ...product, quantity: 1, id: Number(id) });
+        toast.success("Item adicionado ao carrinho!");
       }
 
       localStorage.setItem(cartKey, JSON.stringify(cartItemsArray));
@@ -49,6 +54,7 @@ export function useCartWithLocalStorage() {
           },
         ])
       );
+      toast.success("Item adicionado ao carrinho!");
     }
   };
 

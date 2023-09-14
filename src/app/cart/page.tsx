@@ -1,10 +1,11 @@
 "use client";
 
+import styled from "styled-components";
+import { useEffect, useState } from "react";
 import { BackToHomeButton, CartItem, Loading } from "@/components";
 import { useCartWithLocalStorage } from "@/hooks";
 import { LocalStorageProduct } from "@/hooks/useCartWithLocalStorage";
-import { useEffect, useState } from "react";
-import styled from "styled-components";
+import { toast } from "react-toastify";
 
 const Container = styled.div`
   display: flex;
@@ -92,6 +93,10 @@ const Container = styled.div`
         background-color: var(--green);
         color: var(--shapes-light);
         cursor: pointer;
+
+        &:hover {
+          opacity: 0.9;
+        }
       }
     }
 
@@ -127,6 +132,13 @@ export default function Cart() {
     removeFromCart(id);
     const newCartItems = cartItems.filter((item) => item.id !== id);
     setCartItems(newCartItems);
+  };
+
+  const handleFinishCart = (): void => {
+    toast.success("Pedido feito com sucesso! Obrigado", {
+      autoClose: false,
+      position: "top-center",
+    });
   };
 
   return (
@@ -165,7 +177,7 @@ export default function Cart() {
               <div>Total</div>
               <div className="price-total">R$ 40,00</div>
             </div>
-            <button>FINALIZAR A COMPRA</button>
+            <button onClick={handleFinishCart}>FINALIZAR A COMPRA</button>
           </div>
           <div className="bottom-part">
             <p>AJUDA</p>

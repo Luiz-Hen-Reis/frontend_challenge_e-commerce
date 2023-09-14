@@ -3,7 +3,6 @@
 import { BackToHomeButton, Loading } from "@/components";
 import { useCartWithLocalStorage, useProductById } from "@/hooks";
 import { formatCategory, formatPrice } from "@/utils";
-
 import { useParams } from "next/navigation";
 import styled from "styled-components";
 
@@ -87,6 +86,10 @@ const RightSide = styled.div`
     background-color: var(--brand-blue);
     color: var(--shapes-light);
     cursor: pointer;
+
+    &:hover {
+      opacity: 0.9;
+    }
   }
 
   .description-container {
