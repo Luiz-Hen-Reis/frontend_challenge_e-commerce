@@ -26,10 +26,10 @@ export function useCartWithLocalStorage() {
     const cartItems = localStorage.getItem(cartKey);
 
     if (cartItems) {
-      let cartItemsArray: LocalStorageProduct[] = JSON.parse(cartItems);
+      let cartItemsArray = JSON.parse(cartItems);
 
       let existingProductIndex = cartItemsArray.findIndex(
-        (item: { id: number }) => item.id === Number(id)
+        (item: { id: string }) => item.id === id
       );
 
       if (existingProductIndex != -1) {
@@ -38,7 +38,7 @@ export function useCartWithLocalStorage() {
           `${cartItemsArray[existingProductIndex].name} adicionado +1`
         );
       } else {
-        cartItemsArray.push({ ...product, quantity: 1, id: Number(id) });
+        cartItemsArray.push({ ...product, quantity: 1, id });
         toast.success("Item adicionado ao carrinho!");
       }
 

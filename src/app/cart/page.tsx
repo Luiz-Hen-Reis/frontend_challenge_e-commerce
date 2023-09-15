@@ -6,6 +6,7 @@ import { BackToHomeButton, CartItem, Loading } from "@/components";
 import { useCartWithLocalStorage } from "@/hooks";
 import { LocalStorageProduct } from "@/hooks/useCartWithLocalStorage";
 import { toast } from "react-toastify";
+import { formatPrice } from "@/utils";
 
 const Container = styled.div`
   display: flex;
@@ -141,6 +142,16 @@ export default function Cart() {
     });
   };
 
+  const cartItemsPrice = cartItems.reduce(
+    (price, item) => item.price_in_cents + price,
+    0
+  );
+
+  const cartItemsTotalPrice = cartItems.reduce(
+    (total, item) => item.price_in_cents * item.quantity + total,
+    0
+  );
+
   return (
     <main>
       <BackToHomeButton />
@@ -149,7 +160,8 @@ export default function Cart() {
           <div>
             <h1>SEU CARRINHO</h1>
             <p>
-              Total ({cartItems.length} produtos) <span>0.00</span>
+              Total ({cartItems.length} produtos){" "}
+              <span>{formatPrice(cartItemsPrice)}</span>
             </p>
           </div>
           <ul>
@@ -168,7 +180,9 @@ export default function Cart() {
             <h2>RESUMO DO PEDIDO</h2>
             <div className="table">
               <div>Subtotal de produtos</div>
-              <div className="price-total">R$ 161,00</div>
+              <div className="price-total">
+                {formatPrice(cartItemsTotalPrice)}
+              </div>
               <div>Entrega</div>
               <div className="price-total">R$ 40,00</div>
             </div>

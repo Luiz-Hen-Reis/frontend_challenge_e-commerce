@@ -4,7 +4,6 @@ import { styled } from "styled-components";
 import { FiShoppingBag } from "react-icons/fi";
 import { useCartWithLocalStorage } from "@/hooks";
 import { useRouter } from "next/navigation";
-import { LocalStorageProduct } from "@/hooks/useCartWithLocalStorage";
 
 const Container = styled.div`
   position: relative;
@@ -25,12 +24,13 @@ const CartCount = styled.span`
 `;
 
 export default function CartControl() {
+  const { cart } = useCartWithLocalStorage();
   const router = useRouter();
 
   return (
     <Container onClick={() => router.push("/cart")}>
       <FiShoppingBag size={24} />
-      <CartCount></CartCount>
+      {cart && cart.length > 0 && <CartCount>!</CartCount>}
     </Container>
   );
 }
