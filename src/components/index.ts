@@ -7,6 +7,7 @@ import SkeletonList from "./skeletons/SkeletonList";
 import CartItem from "./page/CartItem";
 import InputBarWSearchIcon from "./ui/InputBar";
 import Loading from "./ui/Loading";
+import CartResume from "./page/CartResume";
 
 export {
   Header,
@@ -18,4 +19,5 @@ export {
   CartItem,
   InputBarWSearchIcon,
   Loading,
+  CartResume,
 };
