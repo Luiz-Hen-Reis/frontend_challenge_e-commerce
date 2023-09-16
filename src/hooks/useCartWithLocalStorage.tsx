@@ -77,51 +77,9 @@ export function useCartWithLocalStorage() {
     return;
   };
 
-  const increaseItemQuantity = (id: number) => {
-    const cartItems = localStorage.getItem(cartKey);
-
-    if (cartItems) {
-      let cartItemsArray = JSON.parse(cartItems);
-
-      let existingProductIndex = cartItemsArray.findIndex(
-        (item: { id: string }) => item.id === id.toString()
-      );
-
-      if (existingProductIndex != -1) {
-        cartItemsArray[existingProductIndex].quantity += 1;
-      }
-
-      localStorage.setItem(cartKey, JSON.stringify(cartItemsArray));
-    }
-
-    return;
-  };
-
-  const decreaseItemQuantity = (id: number) => {
-    const cartItems = localStorage.getItem(cartKey);
-
-    if (cartItems) {
-      let cartItemsArray = JSON.parse(cartItems);
-
-      let existingProductIndex = cartItemsArray.findIndex(
-        (item: { id: string }) => item.id === id.toString()
-      );
-
-      if (existingProductIndex != -1) {
-        cartItemsArray[existingProductIndex].quantity -= 1;
-      }
-
-      localStorage.setItem(cartKey, JSON.stringify(cartItemsArray));
-    }
-
-    return;
-  };
-
   return {
     cart,
     addToCart,
     removeFromCart,
-    increaseItemQuantity,
-    decreaseItemQuantity,
   };
 }
