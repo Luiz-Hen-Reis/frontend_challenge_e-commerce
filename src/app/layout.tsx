@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Header } from "@/components";
 import type { Metadata } from "next";
 import { Saira } from "next/font/google";
-import Providers from "@/providers";
+import { Providers } from "@/providers";
 
 const saira = Saira({ subsets: ["latin"] });
 

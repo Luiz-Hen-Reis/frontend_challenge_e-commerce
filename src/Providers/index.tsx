@@ -14,7 +14,7 @@ const theme = {
   largeBreakPoint: "930px",
 };
 
-export default function Providers({ children }: Props) {
+export function Providers({ children }: Props) {
   return (
     <FilterProvider>
       <StyledComponentsRegistry>
