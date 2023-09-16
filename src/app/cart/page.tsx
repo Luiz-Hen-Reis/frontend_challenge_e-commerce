@@ -107,6 +107,7 @@ export default function Cart() {
             {cartItems &&
               cartItems.map((product) => (
                 <CartItem
+                  key={product.id}
                   {...product}
                   handleRemoveFromCart={handleRemoveFromCart}
                   updateCartQuantity={updateCartQuantity}
