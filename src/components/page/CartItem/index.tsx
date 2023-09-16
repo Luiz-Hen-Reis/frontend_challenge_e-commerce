@@ -1,12 +1,8 @@
 "use client";
 
 import { GoTrash } from "react-icons/go";
-import {
-  LocalStorageProduct,
-  useCartWithLocalStorage,
-} from "@/hooks/useCartWithLocalStorage";
+import { LocalStorageProduct } from "@/hooks/useCartWithLocalStorage";
 import { formatPrice } from "@/utils";
-import { useState } from "react";
 import styled from "styled-components";
 
 interface CartItemProps extends LocalStorageProduct {
@@ -27,68 +23,60 @@ const ItemContainer = styled.li`
     flex-direction: row;
     align-items: flex-start;
   }
+`;
 
-  .left-side {
-    width: 100%;
+const ItemInfoContainer = styled.div`
+  padding: 2rem 1.6rem 2rem 0;
 
-    @media (min-width: ${(props) => props.theme.largeBreakPoint}) {
-      width: 25.6rem;
-    }
-
-    img {
-      width: inherit;
-    }
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .right-side {
-    padding: 2rem 1.6rem 2rem 0;
-
-    .title,
-    .quantity-price-area {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      span {
-        cursor: pointer;
-      }
-    }
-
-    h2 {
-      font-size: 2rem;
-      font-weight: 300;
-      color: var(--text-dark-2);
-    }
-
-    p {
-      margin: 2rem 0 4rem;
-      font-size: 1.4rem;
-      font-weight: 400;
-      line-height: 1.8rem;
-      color: var(--text-dark-2);
-    }
-
-    .quantity-price-area {
-      .quantity-field {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-
-        button,
-        span {
-          font-size: 1.4rem;
-          padding: 0.4rem 0.8rem;
-          cursor: pointer;
-        }
-      }
-
-      span {
-        align-self: end;
-        font-size: 1.6rem;
-        font-weight: 600;
-      }
-    }
+  h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--text-dark-2);
   }
+
+  p {
+    margin: 2rem 0 4rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.8rem;
+    color: var(--text-dark-2);
+  }
+
+  span {
+    align-self: end;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+`;
+
+const DeleteIcon = styled(GoTrash)`
+  cursor: pointer;
+`;
+
+const ImageContainer = styled.div`
+  width: 100%;
+
+  @media (min-width: ${(props) => props.theme.largeBreakPoint}) {
+    width: 25.6rem;
+  }
+
+  img {
+    width: inherit;
+  }
+`;
+
+const SelectQuantity = styled.select`
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  color: var(--text-dark);
+  font-weight: 400;
+  font-size: 1.6rem;
 `;
 
 export default function CartItem({
@@ -100,44 +88,30 @@ export default function CartItem({
   id,
   handleRemoveFromCart,
 }: CartItemProps) {
-  const { increaseItemQuantity, decreaseItemQuantity } =
-    useCartWithLocalStorage();
-  const [itemQuantity, setItemQuantity] = useState<number>(quantity);
-
-  function handleIncreaseItemQuantity(id: number) {
-    setItemQuantity(itemQuantity + 1);
-    increaseItemQuantity(id);
-  }
-
-  function handleDecreaseItemQuantity(id: number) {
-    if (itemQuantity > 1) {
-      setItemQuantity(itemQuantity - 1);
-      decreaseItemQuantity(id);
-    }
-  }
-
   return (
     <ItemContainer>
-      <div className="left-side">
+      <ImageContainer>
         <img src={imageUrl} alt={name} />
-      </div>
-      <div className="right-side">
-        <div className="title">
+      </ImageContainer>
+      <ItemInfoContainer>
+        <div>
           <h2>{name}</h2>
           <span onClick={() => handleRemoveFromCart(id)}>
-            <GoTrash size={20} />
+            <DeleteIcon size={20} />
           </span>
         </div>
         <p>{description}</p>
-        <div className="quantity-price-area">
-          <div className="quantity-field">
-            <button onClick={() => handleDecreaseItemQuantity(id)}>-</button>
-            <span>{itemQuantity}</span>
-            <button onClick={() => handleIncreaseItemQuantity(id)}>+</button>
-          </div>
+        <div>
+          <SelectQuantity value={quantity}>
+            <option value={1}>1</option>
+            <option value={2}>2</option>
+            <option value={3}>3</option>
+            <option value={4}>4</option>
+            <option value={5}>5</option>
+          </SelectQuantity>
           <span>{formatPrice(price)}</span>
         </div>
-      </div>
+      </ItemInfoContainer>
     </ItemContainer>
   );
 }
