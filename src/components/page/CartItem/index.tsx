@@ -1,5 +1,6 @@
 "use client";
 
+import { ChangeEvent } from "react";
 import { GoTrash } from "react-icons/go";
 import { LocalStorageProduct } from "@/hooks/useCartWithLocalStorage";
 import { formatPrice } from "@/utils";
@@ -7,6 +8,7 @@ import styled from "styled-components";
 
 interface CartItemProps extends LocalStorageProduct {
   handleRemoveFromCart: (id: number) => void;
+  updateCartQuantity: (id: number, quantity: number) => void;
 }
 
 const ItemContainer = styled.li`
@@ -87,7 +89,12 @@ export default function CartItem({
   quantity,
   id,
   handleRemoveFromCart,
+  updateCartQuantity,
 }: CartItemProps) {
+  const handleUpdateCartQuantity = (e: ChangeEvent<HTMLSelectElement>) => {
+    updateCartQuantity(id, Number(e.target.value));
+  };
+
   return (
     <ItemContainer>
       <ImageContainer>
@@ -102,7 +109,7 @@ export default function CartItem({
         </div>
         <p>{description}</p>
         <div>
-          <SelectQuantity value={quantity}>
+          <SelectQuantity value={quantity} onChange={handleUpdateCartQuantity}>
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
