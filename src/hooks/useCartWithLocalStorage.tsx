@@ -8,7 +8,7 @@ export interface LocalStorageProduct extends Product {
   quantity: number;
 }
 
-export function useCartWithLocalStorage() {
+export function useCartWithLocalStorage<T>() {
   const cartKey = "cart-items";
 
   const [cart, setCart] = useState<LocalStorageProduct[]>([]);
@@ -58,28 +58,14 @@ export function useCartWithLocalStorage() {
     }
   };
 
-  const removeFromCart = (id: number) => {
-    const cartItems = localStorage.getItem(cartKey);
-
-    if (cartItems) {
-      let cartItemsArray = JSON.parse(cartItems);
-
-      let existingProductIndex = cartItemsArray.findIndex(
-        (item: { id: string }) => item.id === id.toString()
-      );
-
-      if (existingProductIndex != -1) {
-        cartItemsArray.splice(existingProductIndex, 1);
-      }
-      localStorage.setItem(cartKey, JSON.stringify(cartItemsArray));
-    }
-
-    return;
+  const updateLocalStorage = (newValue: LocalStorageProduct[]) => {
+    setCart(newValue);
+    localStorage.setItem(cartKey, JSON.stringify(newValue));
   };
 
   return {
     cart,
     addToCart,
-    removeFromCart,
+    updateLocalStorage,
   };
 }
