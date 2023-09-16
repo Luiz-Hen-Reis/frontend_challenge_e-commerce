@@ -22,6 +22,11 @@ export function useCartWithLocalStorage<T>() {
     }
   }, []);
 
+  const updateLocalStorage = (newValue: LocalStorageProduct[]) => {
+    setCart(newValue);
+    localStorage.setItem(cartKey, JSON.stringify(newValue));
+  };
+
   const addToCart = (product: Product, id: string) => {
     const cartItems = localStorage.getItem(cartKey);
 
@@ -32,10 +37,9 @@ export function useCartWithLocalStorage<T>() {
         (item: { id: string }) => item.id === id
       );
 
-      if (existingProductIndex != -1) {
-        cartItemsArray[existingProductIndex].quantity += 1;
-        toast.success(
-          `${cartItemsArray[existingProductIndex].name} adicionado +1`
+      if (existingProductIndex !== -1) {
+        toast.warning(
+          `${cartItemsArray[existingProductIndex].name} já foi adicionado ao seu carrinho anteriormente`
         );
       } else {
         cartItemsArray.push({ ...product, quantity: 1, id });
@@ -58,14 +62,14 @@ export function useCartWithLocalStorage<T>() {
     }
   };
 
-  const updateLocalStorage = (newValue: LocalStorageProduct[]) => {
-    setCart(newValue);
-    localStorage.setItem(cartKey, JSON.stringify(newValue));
+  const clearCartFromlocalStorage = () => {
+    localStorage.removeItem(cartKey);
   };
 
   return {
     cart,
     addToCart,
+    clearCartFromlocalStorage,
     updateLocalStorage,
   };
 }
