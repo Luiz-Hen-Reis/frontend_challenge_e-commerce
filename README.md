@@ -29,7 +29,7 @@ Backend:
 
 ## How did this project contributed with my career?
 
-In this project, I had the change to apply and understand better some functionalites involving Local Storage, like retrieve data from local storage, how to set data on local storage.
+In this project, I had the chance to apply and understand better some functionalites involving Local Storage, like retrieve data from local storage, how to set data on local storage.
 
 And also in this project I had the chance to apply the pagination functionality, which I knew just in theory.
 
