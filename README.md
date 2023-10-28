@@ -1,7 +1,7 @@
 
 # Caputeeno e-commerce
 
-Project inspired on the Rocketseat challenge.
+Project inspired by the Rocketseat challenge.
 
 ## Challenge inspiration:
 
